@@ -1,15 +1,35 @@
 {
   "name": "react-ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A financial ERP application for managing financial tasks",
+  "author": "NADA Team", 
   "main": "dist/main.js",
   "scripts": {
-    "dev": "concurrently \"vite\" \"cross-env DEV= tsc-watch -p tsconfig-electron.json --onSuccess \\\"electron .\\\"\"",
+    "dev": "concurrently \"vite\" \"cross-env DEV= tsc-watch -p tsconfig-electron.json --onSuccess \\\"electron . --trace-warnings\\\"\"",
     "preview": "vite build && tsc -p tsconfig-electron.json && cross-env PREVIEW= electron .",
     "build": "vite build && tsc -p tsconfig-electron.json && electron-forge make"
   },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "./assets/app-icon"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "financial_erp"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "config": {}
+        }
+      ]
+    }
+  },
   "dependencies": {
-    "@electron-forge/cli": "^7.6.1",
     "@fluentui/react-components": "^9.58.2",
     "@fluentui/react-nav-preview": "^0.11.2",
     "concurrently": "^9.1.2",
@@ -21,10 +41,14 @@
     "tsc-watch": "^6.2.1"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^7.6.1",
+    "@electron-forge/maker-squirrel": "^7.6.1",
+    "@electron-forge/maker-zip": "^7.6.1",
     "@eslint/js": "^9.17.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "electron": "^34.0.2",
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",

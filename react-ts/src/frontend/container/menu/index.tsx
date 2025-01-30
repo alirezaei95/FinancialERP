@@ -56,6 +56,7 @@ import {
   bundleIcon,
   PersonCircle32Regular,
 } from "@fluentui/react-icons";
+import { FocusableElementsInCells } from "../table";
 
 const useStyles = makeStyles({
   root: {
@@ -230,8 +231,8 @@ export const BasicMenu = (props: Partial<NavDrawerProps>) => {
           </NavItem>
         </NavDrawerBody>
       </NavDrawer>
-      <div className={styles.content}>
-        {!isOpen && renderHamburgerWithToolTip()}
+      <div className={styles.content + ' test'}>
+        {/* {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>
           <RadioGroup
@@ -257,7 +258,8 @@ export const BasicMenu = (props: Partial<NavDrawerProps>) => {
             label={isMultiple ? "Multiple" : "Single"}
             aria-labelledby={multipleLabelId}
           />
-        </div>
+        </div> */}
+        <FocusableElementsInCells />
       </div>
     </div>
   );
